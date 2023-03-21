@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const db = require('./config/db');
+const { errorHandler } = require('./middlewares/errorHandler');
 
 //database connection initiated
 db();
@@ -11,6 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', require('./routes/employee'));
+
+app.use(errorHandler);
 
 app.listen(3000, () => {
   console.log('the server is running');
