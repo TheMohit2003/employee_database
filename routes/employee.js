@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const auth = require('../middlewares/authentiacate');
 const router = express.Router();
 const {
   getData,
