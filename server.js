@@ -1,21 +1,33 @@
 const express = require('express');
 const app = express();
-require('dotenv').config();
+const dotenv = require('dotenv');
 const db = require('./config/db');
-const { errorHandler } = require('./middlewares/errorHandler');
+const cors = require('cors');
+const errorHandler = require('./middlewares/errorHandler');
+const employeeRouter = require('./routes/employee');
+
+dotenv.config();
 const port = process.env.PORT || 3000;
-//database connection initiated
+
+// Connect to database
 db();
-// Middleware to parse JSON data
+
+// Enable CORS
+app.use(cors());
+
+// Parse JSON request bodies
 app.use(express.json());
-// Middleware to parse URL-encoded data
+
+// Parse URL-encoded request bodies
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', require('./routes/employee'));
-// app.use('/auth', require('./routes/auth'));    //under progress
+// Routes
+app.use('/', employeeRouter);
 
+// Error handling middleware
 app.use(errorHandler);
 
+// Start server
 app.listen(port, () => {
-  console.log(`server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
