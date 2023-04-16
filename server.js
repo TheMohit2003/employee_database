@@ -1,33 +1,24 @@
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv');
+require('dotenv').config();
 const db = require('./config/db');
-const cors = require('cors');
-const errorHandler = require('./middlewares/errorHandler');
-const employeeRouter = require('./routes/employee');
-
-dotenv.config();
+const { errorHandler } = require('./middlewares/errorHandler');
+const cors = require('cors')
+ 
+app.use(cors())
 const port = process.env.PORT || 3000;
-
-// Connect to database
+//database connection initiated
 db();
-
-// Enable CORS
-app.use(cors());
-
-// Parse JSON request bodies
+// Middleware to parse JSON data
 app.use(express.json());
-
-// Parse URL-encoded request bodies
+// Middleware to parse URL-encoded data
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.use('/', employeeRouter);
+app.use('/', require('./routes/employee'));
+// app.use('/auth', require('./routes/auth'));    //under progress
 
-// Error handling middleware
 app.use(errorHandler);
 
-// Start server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`server is running on port ${port}`);
 });
