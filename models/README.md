@@ -8,6 +8,10 @@ The schema has five fields:
 - `address`: a string
 - `age`: a number
 - `department`: a string
-- `status`: a number that can only be 1, 2, or 3
+- `status`: a number that can only be 1, 2, or 3  
+>1 = Remote  
+>2 = Contract  
+>3 = Full time  
+
 
 The schema also includes timestamps that are automatically added to each document when it is created or updated.
