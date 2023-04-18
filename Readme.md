@@ -1,4 +1,6 @@
-# Link
+# EmployeeDatabase fullstact application (backend repo)
+
+- to view the frontend repo [click here](https://github.com/TheMohit2003/employeeDatabase-frontend)
 
 1) GET : https://employeedataupdate.up.railway.app/
 2) POST : https://employeedataupdate.up.railway.app/
