@@ -1,4 +1,4 @@
-# EmployeeDatabase fullstact application (backend repo)
+# EmployeeDatabase fullstact application (backend)
 
 - to view the frontend repo [click here](https://github.com/TheMohit2003/employeeDatabase-frontend)
 
